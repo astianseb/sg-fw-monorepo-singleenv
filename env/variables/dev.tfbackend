@@ -1,2 +1,2 @@
-bucket = "cicd-boot-03de4e4d-tfstate"
+bucket = "cicd-boot-84ff8d79-tfstate"
 prefix = "dev/firewall-state"
