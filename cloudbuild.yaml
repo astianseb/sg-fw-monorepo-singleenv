@@ -40,6 +40,7 @@ steps:
           echo "*************** TERRAFORM INIT ******************"
           echo "******* At environment: dev    ******************"
           echo "*************************************************"
+          ls -al
           cd ./helper_scripts
           pwd
           ls -al
@@ -49,6 +50,7 @@ steps:
           echo "*************** TERRAFORM INIT ******************"
           echo "******* At environment: prod   ******************"
           echo "*************************************************"
+          ls -al
           cd ./helper_scripts
           pwd
           ls -al
