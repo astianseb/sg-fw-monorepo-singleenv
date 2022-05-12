@@ -1,0 +1,1 @@
+project_vpc_internal = "vpc-internal-0"

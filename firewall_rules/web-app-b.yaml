@@ -1,0 +1,19 @@
+web-app-b-egress:
+  allow:
+    - ports: []
+      protocol: all
+  direction: EGRESS
+  target_tags:
+   - web-app-b
+  destination_ranges:
+    - 0.0.0.0/0
+# Allow HTTPS
+web-app-b-ingress-https:
+  allow:
+    - ports: [443]
+      protocol: tcp
+  direction: INGRESS
+  target_tags:
+    - web-app-b
+  source_ranges:
+    - 0.0.0.0/0
