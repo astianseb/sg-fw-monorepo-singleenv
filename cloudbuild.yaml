@@ -42,9 +42,7 @@ steps:
           echo "*************************************************"
           ls -al
           cd ./helper_scripts
-          pwd
-          ls -al
-          ./dev-terraform-init.sh
+          $(pwd)/dev-terraform-init.sh
       elif [[ "$BRANCH_NAME" == *"prod"* ]]; then
           echo ""
           echo "*************** TERRAFORM INIT ******************"
