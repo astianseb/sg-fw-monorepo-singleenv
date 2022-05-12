@@ -16,7 +16,7 @@
 steps:
 - id: 'branch name'
   name: 'alpine'
-  entrypoint: 'bash'  
+  entrypoint: 'sh'  
   args: 
   - '-c'
   - | 
@@ -31,7 +31,7 @@ steps:
 
 - id: 'tf init'
   name: 'hashicorp/terraform:1.1.9'
-  entrypoint: 'bash'
+  entrypoint: 'sh'
   args: 
   - '-c'
   - |
@@ -40,20 +40,25 @@ steps:
           echo "*************** TERRAFORM INIT ******************"
           echo "******* At environment: dev    ******************"
           echo "*************************************************"
-          cd helper_scripts
-          ./dev-terraform-init.sh
+          ls -al
+          cd ./helper_scripts
+          pwd
+          exec $(pwd)/dev-terraform-init.sh
       elif [[ "$BRANCH_NAME" == *"prod"* ]]; then
           echo ""
           echo "*************** TERRAFORM INIT ******************"
           echo "******* At environment: prod   ******************"
           echo "*************************************************"
-          cd helper_scripts
+          ls -al
+          cd ./helper_scripts
+          pwd
+          ls -al
           ./prod-terraform-init.sh
       else
           echo ""
           echo "*************** TERRAFORM INIT **********************"
           echo "****         Wrong branch name!             *********"
-          echo "**** naming convention: <prod/dev-<....> "  *********"
+          echo "**** naming convention: <prod/dev-<....>    *********"
           echo "*****************************************************"
           exit 1
       fi
