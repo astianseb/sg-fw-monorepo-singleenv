@@ -40,14 +40,16 @@ steps:
           echo "*************** TERRAFORM INIT ******************"
           echo "******* At environment: dev    ******************"
           echo "*************************************************"
-          cd helper_scripts
+          cd ./helper_scripts
+          pwd
           ./dev-terraform-init.sh
       elif [[ "$BRANCH_NAME" == *"prod"* ]]; then
           echo ""
           echo "*************** TERRAFORM INIT ******************"
           echo "******* At environment: prod   ******************"
           echo "*************************************************"
-          cd helper_scripts
+          cd ./helper_scripts
+          pwd
           ./prod-terraform-init.sh
       else
           echo ""
