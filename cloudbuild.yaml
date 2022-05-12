@@ -53,7 +53,7 @@ steps:
           echo ""
           echo "*************** TERRAFORM INIT **********************"
           echo "****         Wrong branch name!             *********"
-          echo "**** naming convention: <prod/dev-<....> "  *********"
+          echo "**** naming convention: <prod/dev-<....>    *********"
           echo "*****************************************************"
           exit 1
       fi
