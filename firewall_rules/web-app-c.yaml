@@ -1,0 +1,19 @@
+web-app-c-egress:
+  allow:
+    - ports: []
+      protocol: all
+  direction: EGRESS
+  target_tags:
+   - web-app-c
+  destination_ranges:
+    - 0.0.0.0/0
+# Allow HTTPS
+web-app-c-ingress-https:
+  allow:
+    - ports: [443]
+      protocol: tcp
+  direction: INGRESS
+  target_tags:
+    - web-app-c
+  source_ranges:
+    - 0.0.0.0/0

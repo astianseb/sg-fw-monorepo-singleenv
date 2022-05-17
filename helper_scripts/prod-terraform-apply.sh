@@ -1,3 +1,3 @@
 #!/bin/sh
 cd ../env
-terraform apply -var-file=./variables/common.tfvars -var-file=./variables/prod.tfvars
+terraform apply -auto-approve -var-file=./variables/common.tfvars -var-file=./variables/prod.tfvars
