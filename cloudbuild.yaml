@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# SG
+# SG feature-1
 
 steps:
 - id: 'branch name'
@@ -37,8 +37,9 @@ steps:
   - |
       if [[ "$BRANCH_NAME" == *"dev"* ]]; then
           echo ""
-          echo "*************** TERRAFORM INIT ******************"
-          echo "******* At environment: dev    ******************"
+          echo "*********** TERRAFORM INIT **********************"
+          echo "******* branch: ${BRANCH_NAME}   ****************"
+          echo "*******   At environment: dev    ****************"
           echo "*************************************************"
           ls -al
           cd ./helper_scripts
@@ -46,8 +47,9 @@ steps:
           exec $(pwd)/dev-terraform-init.sh
       elif [[ "$BRANCH_NAME" == *"prod"* ]]; then
           echo ""
-          echo "*************** TERRAFORM INIT ******************"
-          echo "******* At environment: prod   ******************"
+          echo "********** TERRAFORM INIT ***********************"
+          echo "******* branch: ${BRANCH_NAME}    ***************"
+          echo "*******    At environment: prod   ***************"
           echo "*************************************************"
           ls -al
           cd ./helper_scripts
@@ -57,6 +59,7 @@ steps:
       else
           echo ""
           echo "*************** TERRAFORM INIT **********************"
+          echo "**** branch: ${BRANCH_NAME}                 *********"
           echo "****         Wrong branch name!             *********"
           echo "**** naming convention: <prod/dev-<....>    *********"
           echo "*****************************************************"
@@ -71,16 +74,18 @@ steps:
   - |
       if [[ "$BRANCH_NAME" == *"dev"* ]]; then
           echo ""
-          echo "*************** TERRAFORM PLAN ******************"
-          echo "******* At environment: dev    ******************"
+          echo "*********** TERRAFORM PLAN **********************"
+          echo "******* branch: ${BRANCH_NAME}   ****************"
+          echo "*******   At environment: dev    ****************"
           echo "*************************************************"
           cd ./helper_scripts
           pwd
           exec $(pwd)/dev-terraform-plan.sh
       elif [[ "$BRANCH_NAME" == *"prod"* ]]; then
           echo ""
-          echo "*************** TERRAFORM PLAN ******************"
-          echo "******* At environment: prod   ******************"
+          echo "********** TERRAFORM PLAN ***********************"
+          echo "******* branch: ${BRANCH_NAME}    ***************"
+          echo "*******    At environment: prod   ***************"
           echo "*************************************************"
           cd ./helper_scripts
           pwd
@@ -88,6 +93,7 @@ steps:
       else
           echo ""
           echo "*************** TERRAFORM PLAN **********************"
+          echo "**** branch: ${BRANCH_NAME}                 *********"
           echo "****         Wrong branch name!             *********"
           echo "**** naming convention: <prod/dev-<....>    *********"
           echo "*****************************************************"
@@ -102,27 +108,28 @@ steps:
   - |
       if [[ "$BRANCH_NAME" == "dev" ]]; then
           echo ""
-          echo "*************** TERRAFORM APPLY ******************"
-          echo "******* At environment: dev     ******************"
-          echo "**************************************************"
-          cd ./helper_scripts
+          echo "*********** TERRAFORM APPLY  *********************"
+          echo "******* branch: ${BRANCH_NAME}   ****************"
+          echo "*******   At environment: dev    ****************"
+          echo "*************************************************"
           pwd
           exec $(pwd)/dev-terraform-apply.sh
       elif [[ "$BRANCH_NAME" == "prod" ]]; then
           echo ""
-          echo "*************** TERRAFORM APPLY ******************"
-          echo "******* At environment: prod    ******************"
+          echo "********** TERRAFORM APPLY **********************"
+          echo "******* branch: ${BRANCH_NAME}    ***************"
+          echo "*******    At environment: prod   ***************"
           echo "*************************************************"
           cd ./helper_scripts
           pwd
           exec $(pwd)/prod-terraform-apply.sh
       else
           echo ""
-          echo "*************** TERRAFORM INIT **********************"
-          echo "****  deployment only on main branches !!!    *******"
-          echo "****    terraform apply only on prod/dev      *******"
-          echo "*****************************************************"
-          exit 1
+          echo "*************** SKIPPING APPLYING  **********************"
+          echo "****  Branch ${BRANCH_NAME} is NOT a main branch     ****"
+          echo "****  deployment only on main dev/prod branches !!!  ****"
+          echo "****                                                 ****"
+          echo "*********************************************************"
       fi
 
 # # [START tf-plan]
