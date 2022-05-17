@@ -125,12 +125,11 @@ steps:
           exec $(pwd)/prod-terraform-apply.sh
       else
           echo ""
-          echo "*************** TERRAFORM APPLY *************************"
+          echo "*************** SKIPPING APPLYING  **********************"
           echo "****  Branch ${BRANCH_NAME} is NOT a main branch     ****"
           echo "****  deployment only on main dev/prod branches !!!  ****"
           echo "****                                                 ****"
           echo "*********************************************************"
-          exit 1
       fi
 
 # # [START tf-plan]
