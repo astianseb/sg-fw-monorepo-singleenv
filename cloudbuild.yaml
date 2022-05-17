@@ -112,6 +112,7 @@ steps:
           echo "******* branch: ${BRANCH_NAME}   ****************"
           echo "*******   At environment: dev    ****************"
           echo "*************************************************"
+          cd ./helper_scripts
           pwd
           exec $(pwd)/dev-terraform-apply.sh
       elif [[ "$BRANCH_NAME" == "prod" ]]; then
